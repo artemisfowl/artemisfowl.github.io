@@ -48,5 +48,29 @@ one can switch to the terminal, run a command and while running the command stil
 other operations - something that piqued my interest.
 
 Now the in the next set, the ricing that I had done in `vim`, `tmux` and the terminal emulator would have to go.
+My aim was to select the very bare minimum setup that would work for me in every Ubuntu flavour at least.
 
 #### Ricing, terminal emulator and the switch to urxvt
+The highest amount of ricing that I had done was in `vim`. I knew from the very start that majority of the things
+would have to go away from there. I was using `Airline` themes and `powerline` fonts, so I naturally gave up both of
+them. The next set that I removed was the nice set of `dev-icons` which sits extremely well with the `Airline` themes.
+
+This reduced the initial startup time of `vim` from around 5 seconds to around 2 seconds. Huge reduction, next I
+removed `tmuxline` plugin, this one reduced the initial startup time to around 0.5 seconds. This was decent enough
+for me. The reason my `vim` is still slow is because I use the `YouCompleteMe` plugin and that initially takes some
+time to load. I also changed the status line of `vim` to give me the information about the line and column number and
+removed the other nitty gritties like showing the mode, the entire filename, git repository branch name etc.
+
+Next was `tmux`, where I removed majority of the colors, added a few custom mappings for moving between panes using
+`hjkl` and made the changes to update and show seconds in the right most corner.
+
+Still, something was not fitting in, I wanted more minimalism. So I started hunting for a simple terminal emulator
+powerful and capable enough to show unicode characters as well as allow me to work seamlessly. Removing `powerline`
+from `vim` made it easy to be used now in any terminal emulator. I came across suggestions to use `urxvt` and
+thought of giving it a try. After overcoming the initial hiccups, I came across the configuration which would show
+the git status messages as well in the right colour. I was facing this issue in the Gnome Terminal Emulator, the status
+messages were shown in red, not a contrasting color with the dark background.
+
+With `urxvt`, everything seemed to fit in place, but the font was still not working out. Changing the font size made
+it look wonkier, so I switched to Ubuntu Mono font with a font size of 9. That seemed to do the trick. Everything fit
+in and here I am editing this post in the same bare minimum configuration.
