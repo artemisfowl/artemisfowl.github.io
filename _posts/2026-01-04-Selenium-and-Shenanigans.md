@@ -47,4 +47,7 @@ The 2 scenarios where I have seen the Selenium powered automations failing are a
 
 - **The system has a degraded performance over time.**
 
-In the first scenario, the issue is for the element locators, a string which is used by Selenium in order to locate an element.
+In the first scenario, the issue is for the element locators, a string which is used by Selenium in order to locate an element. If the web application workflow being automated is getting updated
+continuously, then the locators are susceptible to changes which can lead to automated workflows failing over builds. It can also lead to failure while performing critical testing, if Selenium is
+being used for testing as well. There is a workaround to this, wherein the locators are placed in a separate file and then the file is being read before trying to locate the element. There are a few
+ways in which one can read the file and load the locator information, I am not going to discuss that in this rant post.
