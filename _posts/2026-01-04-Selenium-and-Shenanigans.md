@@ -60,4 +60,29 @@ The age old way, which I have seen people doing is to create classes. Some term 
 are a few more names in the market which are used to refer to the same approach. These terms are usually propagated by the _"Architect"_ community who have created jargon after jargon in order to
 refer to the approach(In my opinion, it is just to-ma-to and to-may-to). In the usual way, a lot of wrappers are created, mostly involving classes. Some do it by creating pages, some create the page
 instances inside an application class and then use the application class instance in the actual automation implementation. Invariably the locator strings are added to the Page classes, resulting in
-extensive automation failures and code changes.
+extensive automation failures and code changes. These code changes again lead to further testing, thereby delaying the process of getting the automations in stable form.
+
+#### Engineer's Way
+
+The engineer's solution to this problem is to generate the same classes(for encapsulation and data identification) and loading the locators dynamically and then using them in the implementation. This
+makes the implementation locator agnostic and can also be extrapolated to work with other automations. Basically the engineering approach is to create a library/engine to perform the automation. This
+approach also reduces the portion of changing code/touching code if the locator changes.
+
+#### Over-Engineer's Way
+There is another set of _"Architects"_ who over-engineer the solution and complicate the implementation by integrating multiple features. They borrow from the engineering solution, but on account of
+the over-engineering lose sight of the "Keep it simple" policy. They sometimes also become adamant about writing classes manually rather than creating dynamic classes from templates at runtime. This
+behavior is typically seen in those _Architects_ who have no idea as to how a software is written and this is something that causes over-complication of the implementation. The code becomes
+unmanageable.
+
+There is idea called `template metaprogramming` which allows for writing code which morphs itself based on the data it has been provided. The Object Oriented approach wherein data is considered
+supreme and the whole design and implementation revolves around defining the data causes issues when procedural approach with simple constructs seem to handle the issue pretty well. In certain cases
+circular inclusion results in failure to create instances itself. Coupled with suggestions from AI wherein the code is not at all tested, rather just slop is added to the implementation, it becomes a
+mess to simplify often forcing engineers to pivot.
+
+One should always remember, the policy if implementation should always be to reduce the complications, introduce minimal complexity and maximum user comfort. In cases, where the complexity can add to
+more user comfort, the user comfort should be prioritized. However, given a lowly engineer that I am, it is not possible to make others see this point.
+
+In order to also understand the point that I stress above, one should have enough experience writing software as well as using software, especially software which has stood the test of time and
+reigns supreme in their field. Just spewing something like "Automation is different than software development" does not make it different, the problem solutions all stem from one area and trickle
+down to another area and hence it should always be kept in mind that the code that is being written to solve a problem in this area, might have also been written for another area. There is also the
+part where one needs to grok the motto - _"Do one thing and do it very well"_ - something that I find useful whenever I implement a solution to a problem and not just dream an improbable solution.
