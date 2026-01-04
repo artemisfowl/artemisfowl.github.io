@@ -22,3 +22,16 @@ It is in this backdrop, that I found some very peculiar cases in which the modul
 where this module fails, I think I should be giving out some more information on the Module itself.
 
 ### Selenium
+
+If we refer to the information available from Wikipedia, the following could be found:
+
+_Selenium is an open source umbrella project for a range of tools and libraries aimed at supporting browser automation._
+
+I have used Selenium as an extension in Firefox browser initially and then used it with Python Programming language. In my experience with Selenium, I have mostly worked with Python and Selenium for
+automating workflows or testing functionalities of Web Applications. The library is exceptionally stable unless the only 2 scenarios which break the automations exist.
+
+### Scenarios
+
+The 2 scenarios where I have seen the Selenium powered automations failing are as follows:
+
+-
