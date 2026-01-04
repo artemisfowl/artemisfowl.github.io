@@ -45,9 +45,19 @@ The 2 scenarios where I have seen the Selenium powered automations failing are a
 
 - **The first scenario is that of the locators changing continuously**
 
-- **The system has a degraded performance over time.**
+- **The system has a workflow change.**
 
-In the first scenario, the issue is for the element locators, a string which is used by Selenium in order to locate an element. If the web application workflow being automated is getting updated
-continuously, then the locators are susceptible to changes which can lead to automated workflows failing over builds. It can also lead to failure while performing critical testing, if Selenium is
-being used for testing as well. There is a workaround to this, wherein the locators are placed in a separate file and then the file is being read before trying to locate the element. There are a few
-ways in which one can read the file and load the locator information, I am not going to discuss that in this rant post.
+In the first scenario, the issue is for the element locators, a string which is used by Selenium in order to locate an element.
+
+If the web application workflow being automated is getting updated continuously, then the locators are susceptible to changes which can lead to automated workflows failing over builds.
+It can also lead to failure while performing critical testing, if Selenium is being used for testing as well.
+There is a workaround to this, wherein the locators are placed in a separate file and then the file is being read before trying to locate the element. There are a few ways in which one can read the
+file and load the locator information. There is the usual way and then the engineers' way and this is what I am about to rant below.
+
+#### Usual Way
+
+The age old way, which I have seen people doing is to create classes. Some term it as Application Object Model, some as Factory Model, sometimes it is referred to as Factory Pattern. I think there
+are a few more names in the market which are used to refer to the same approach. These terms are usually propagated by the _"Architect"_ community who have created jargon after jargon in order to
+refer to the approach(In my opinion, it is just to-ma-to and to-may-to). In the usual way, a lot of wrappers are created, mostly involving classes. Some do it by creating pages, some create the page
+instances inside an application class and then use the application class instance in the actual automation implementation. Invariably the locator strings are added to the Page classes, resulting in
+extensive automation failures and code changes.
