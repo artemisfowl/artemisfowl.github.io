@@ -33,6 +33,12 @@ as Java, based on the examples that I have seen on the web) uses 2 inputs, one i
 is the locating strategy. The locating strategy is primarily based on locating elements using CSS, ID, class or some other attribute. There are certain techniques which could be leveraged to even
 locate elements based on the text content present.
 
+For some reason though, I have always found CSS to be verbose enough for locating elements. There are a lot of techniques already present for locating elements using CSS selectors. The main reason I
+like the CSS way of locating elements is because, one can test if the locator is proper using the `document.querySelector(...)` approach or check for multiple elements using the
+`document.querySelectorAll(...)` approach. If the locator string is proper, the element would be located right away, in case it is not, there would be nothing found.
+
+More information on CSS selectors could be found [here](https://scrapfly.io/blog/posts/css-selector-cheatsheet).
+
 ### Scenarios
 
 The 2 scenarios where I have seen the Selenium powered automations failing are as follows:
