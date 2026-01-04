@@ -28,10 +28,17 @@ If we refer to the information available from Wikipedia, the following could be 
 _Selenium is an open source umbrella project for a range of tools and libraries aimed at supporting browser automation._
 
 I have used Selenium as an extension in Firefox browser initially and then used it with Python Programming language. In my experience with Selenium, I have mostly worked with Python and Selenium for
-automating workflows or testing functionalities of Web Applications. The library is exceptionally stable unless the only 2 scenarios which break the automations exist.
+automating workflows or testing functionalities of Web Applications. The library is exceptionally stable unless the only 2 scenarios which break the automations exist. Selenium with Python (as well
+as Java, based on the examples that I have seen on the web) uses 2 inputs, one is the locator string which it would be using in order to parse the DOM and then locate the element of choice, the other
+is the locating strategy. The locating strategy is primarily based on locating elements using CSS, ID, class or some other attribute. There are certain techniques which could be leveraged to even
+locate elements based on the text content present.
 
 ### Scenarios
 
 The 2 scenarios where I have seen the Selenium powered automations failing are as follows:
 
--
+- **The first scenario is that of the locators changing continuously**
+
+- **The system has a degraded performance over time.**
+
+In the first scenario, the issue is for the element locators, a string which is used by Selenium in order to locate an element.
