@@ -47,6 +47,9 @@ The 2 scenarios where I have seen the Selenium powered automations failing are a
 
 - **The system has a workflow change.**
 
+Today, I am mostly going to speak about the first scenario. The second scenario does not have a straight forward solution, it involves a little amount of process adherence and some intelligent
+coding. The first scenario can be handled completely with code and should be done so, however different approaches and over-engineering mars the good results from seeping in.
+
 In the first scenario, the issue is for the element locators, a string which is used by Selenium in order to locate an element.
 
 If the web application workflow being automated is getting updated continuously, then the locators are susceptible to changes which can lead to automated workflows failing over builds.
