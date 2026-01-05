@@ -30,3 +30,26 @@ multiple elements using a single locator string.
 
 It is at this juncture that we need to engineer our own solution. We will be using some of the concepts of this same `selenium_page_factory` Python module, however, we will be engineering our own
 solution. Our approach would be to contain the locating strategy, the locator string and the specification as to whether the locator string would be fetching a single element or multiple elements.
+We also need to keep in mind the user experience, if we use JSON, the following could be considered as a structure:
+
+```JSON
+{
+	"LoginPage": {
+		"username": {
+				"by": "CSS",
+				"locator": "input[data-test='username-input']",
+				"multiple": false
+		},
+			"password": {
+				"by": "CSS",
+				"locator": "input[data-test='password-input']",
+				"multiple": false
+			},
+			"login_button": {
+				"by": "CSS",
+				"locator": "input[data-test='submit-button']",
+				"multiple": false
+			}
+	}
+}
+```
