@@ -32,7 +32,7 @@ It is at this juncture that we need to engineer our own solution. We will be usi
 solution. Our approach would be to contain the locating strategy, the locator string and the specification as to whether the locator string would be fetching a single element or multiple elements.
 We also need to keep in mind the user experience, if we use JSON, the following could be considered as a structure:
 
-```JSON
+```json
 {
 	"LoginPage": {
 		"username": {
@@ -53,3 +53,6 @@ We also need to keep in mind the user experience, if we use JSON, the following 
 	}
 }
 ```
+
+There is a fundamental problem with this approach. The indentation, despite trying to help the user to read and understand it, causes confusion when more members are to be added. There are also other
+files which could be leveraged as well, for example TOML, YAML, XML and the like. All of these files suffer from the same basic problem, they are not visually
