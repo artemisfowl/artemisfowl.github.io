@@ -99,3 +99,49 @@ login_button=CSS | input[data-test='submit-button'] | false
 
 Easy, single line entries, clear enough to be used for specifying whether multiple elements or a single element will be fetched. There is no indentation or bracing or separation of blocks required,
 so the cognitive complexity also is taken care.
+
+#### Loading the file
+
+Now that we have selected the locator file format, we will be working on the code that will be responsible for reading this file and loading the elements accordingly. The loading could be done based
+on the framework/module that is being used in order to write the automation. If someone is using the `Behave` Python module, one could write the code for loading the elements inside `environment.py`
+file.
+
+Irrespective of wherever the code is written, we will concentrate on the task at hand - we will be following the portion of encapsulation and segregation by creating objects at runtime. The Objects
+would be of a Base class which represents each Page. So, in the aforementioned example, it is the `LoginPage`. In order to do so, one would have to write a sample base class:
+
+```python
+class Page:
+  def __init__(self, driver):
+    self.driver = driver  # We need this driver later for locating elements
+
+  def wait_for(self):
+    pass                  # This needs to be implemented in case the user wishes to wait for the page to load.
+```
+
+Now, in order to use this Page, we would be writing something as follows:
+
+```python
+from configparser import ConfigParser
+from pathlib import Path
+
+...
+
+def load(locator_filepath: str):
+  if not len(locator_filepath):
+    raise ValueError("Locator filepath is not a valid filepath")
+
+  if not isinstance(locator_filepath, str):
+    raise TypeError("Locator filepath should be a non-empty string")
+
+  if not Path(locator_filepath).is_file():
+    raise FileNotFoundError("Locator file is not present in the specified location")
+
+  parser = ConfigParser()
+  parser.optionxform = str
+
+  parser.read(locator_filepath)
+
+  for section in parser.sections:
+    for option, value in parser.items(section):
+      ...
+```
