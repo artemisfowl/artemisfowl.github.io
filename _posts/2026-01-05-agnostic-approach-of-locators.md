@@ -55,4 +55,29 @@ We also need to keep in mind the user experience, if we use JSON, the following 
 ```
 
 There is a fundamental problem with this approach. The indentation, despite trying to help the user to read and understand it, causes confusion when more members are to be added. There are also other
-files which could be leveraged as well, for example TOML, YAML, XML and the like. All of these files suffer from the same basic problem, they are not visually
+files which could be leveraged as well, for example TOML, YAML, XML and the like. All of these files suffer from the same basic problem, they have a cognitive complexity to themselves.
+
+[!NOTE] Python also uses spaces in order to separate code blocks, however the interpreter actually catches the issues when the program is being run. One could argue that `json` and similar python
+modules already report issues in case the file is not having proper format, however, the cognitive complexity is not taken into account for files like YAML and TOML.
+
+If some argue that we should be using YAML file, since it is a _"standard"_, we would be looking at something as follows:
+
+```yaml
+LoginPage:
+  username:
+    by: CSS
+    locator: input[data-test='username-input']
+    multiple: false
+  password:
+    by: CSS
+    locator: input[data-test='password-input']
+    multiple: false
+  login_button:
+    by: CSS
+    locator: input[data-test='submit-button']
+    multiple: false
+
+```
+
+Just take a look at the YAML format above. If someone would have to add on top of the existing data, if they are editing with an editor which does not have autoindentation present, they might be
+adding it in another layer of increased and decreased indentation.
