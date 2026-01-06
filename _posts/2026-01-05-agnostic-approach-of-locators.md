@@ -79,5 +79,22 @@ LoginPage:
 
 ```
 
-Just take a look at the YAML format above. If someone would have to add on top of the existing data, if they are editing with an editor which does not have autoindentation present, they might be
-adding it in another layer of increased and decreased indentation.
+Just take a look at the YAML format above. If someone would have to add on top of the existing data, if they are editing with an editor which does not have auto-indentation present, they might be
+adding it in another layer of increased and decreased indentation. There is also the part of the `expanded tabs` as well as `spaces in place of tabs`.
+
+Not to mention, to find out the issues, one would have to run the code/automation in order for the interpreter to report the errors. So, as we can see, the debugging becomes slow, delayed.
+That is another portion that is completely unacceptable. The debugging and editing of the locator file(going forward we will be calling the file containing the locator information as the locator
+file) gets hampered.
+
+The solution is to take a look at an existing format which specifies everything in one single line per element. The best contender in this case is the CFG or INI file. An INI file having the
+aforementioned information could be written as follows:
+
+```ini
+[LoginPage]
+username=CSS | input[data-test='username-input'] | false
+password=CSS | input[data-test='password-input'] | false
+login_button=CSS | input[data-test='submit-button'] | false
+```
+
+Easy, single line entries, clear enough to be used for specifying whether multiple elements or a single element will be fetched. There is no indentation or bracing or separation of blocks required,
+so the cognitive complexity also is taken care.
