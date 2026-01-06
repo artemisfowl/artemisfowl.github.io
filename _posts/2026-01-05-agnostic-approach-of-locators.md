@@ -57,7 +57,7 @@ We also need to keep in mind the user experience, if we use JSON, the following 
 There is a fundamental problem with this approach. The indentation, despite trying to help the user to read and understand it, causes confusion when more members are to be added. There are also other
 files which could be leveraged as well, for example TOML, YAML, XML and the like. All of these files suffer from the same basic problem, they have a cognitive complexity to themselves.
 
-> [!NOTE]
+> [!INFO]
 > Python also uses spaces in order to separate code blocks, however the interpreter actually catches the issues when the program is being run. One could argue that `json` and similar python
 > modules already report issues in case the file is not having proper format, however, the cognitive complexity is not taken into account for files like YAML and TOML.
 
