@@ -126,7 +126,7 @@ from pathlib import Path
 
 ...
 
-def load(locator_filepath: str):
+def load(locator_filepath: str, container: object):
   if not len(locator_filepath):
     raise ValueError("Locator filepath is not a valid filepath")
 
@@ -142,6 +142,19 @@ def load(locator_filepath: str):
   parser.read(locator_filepath)
 
   for section in parser.sections:
+    tmp = Page(driver=webdriver)
+    ...
     for option, value in parser.items(section):
       ...
+      setattr(tmp, option, value)
+    ...
+    setattr(container, section, tmp)
 ```
+
+As evident from the snippet above, we can create an instance of the `Page` class in the sections loop and then set the option and value as attribute name and value respectively. Post that we can set
+the attribute in the Page instance and then the same instance could be assigned to a container. Here the container could be `context` from Behave Python module or any class object.
+
+The result of the aforementioned code allows for creating pages at runtime without having to do any _"Architect"_-ing or Over-engineering at all.
+
+Writing classes upon classes limits the user from freeing themselves from the clutches of Class Complexity and traditional thinking. With respect to how the elements could be located, that is
+something to be detailed in the next post.
