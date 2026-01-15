@@ -52,3 +52,28 @@ login_button = CSS | button[data-test="login"] | false
 [Profile]
 ...
 ```
+
+In order to locate the element, the user would be writing something like `Login.username.type("john_doe")`. We will concentrate on the `Login.username...` portion only, we will get
+back to the `...type("john_doe")` in the next post. In order to locate the element and return the same using the `.`, the definition of the `__getattr__(...)` to check the value of the
+option and then return a Selenium Web Element.
+
+
+The implementation would be changed to something as follows:
+```python
+def __getattr__(self, name):
+  value = self.__dict__.get(name)
+  if not value:
+    raise AttributeError("Invalid attribute name specified")
+
+  strategy, locator, is_multiple = (i.strip() for i in value.split("|"))
+  ...
+```
+The `is_multiple` could be converted into boolean using a simple logic as follows:
+```python
+...
+from ast import literal_eval
+...
+is_multiple = literal_eval(is_multiple.capitalize())
+...
+```
+Once this is done, the next step is to locate the element using `By.<strategy>` resolution.
