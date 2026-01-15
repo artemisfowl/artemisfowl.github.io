@@ -77,4 +77,36 @@ from ast import literal_eval
 is_multiple = literal_eval(is_multiple.capitalize())
 ...
 ```
-Once this is done, the next step is to locate the element using `By.<strategy>` resolution. The `By.<strategy>` resolution could be done in multiple ways, one could
+Once this is done, the next step is to locate the element using `By.<strategy>` resolution. The `By.<strategy>` resolution could be done in multiple ways, one could achieve this
+in multiple ways. The easiest one could think of is to create a dictionary and then refer to the dictionary for the value of the strategy. For example,
+```python
+strategy = {
+  "CSS": By.CSS_SELECTOR,
+  "XPATH": By.XPATH,
+  ...
+}
+```
+Now one could query the strategy from the strategy map and retrieve the actual intended `By.<strategy>`.
+
+There is still a small portion remaining to be done which when added to `__getattr__` shall complete the implementation and element location.
+
+#### Finally locating the elements
+
+Now that we have already parsed the value of the option stored, we will be going ahead to locate the element.
+
+```python
+def __getattr__(self, attribute_name: str):
+  ...
+  if is_multiple:
+    return self._get_elements(strategy, locator)
+  else:
+    return self._get_element(strategy, locator)
+```
+As we can see, the `self._get_elements(...)` will be locating and returning a list of Web Elements and `self._get_element(...)` will be locating and returning a single Selenium Web Element.
+
+### Nut shell
+
+In short, we can write a simple dynamic Page Factory without having to resort to using an external library, armed with just the basics of Python and Selenium module of Python.
+There is still the part where we might want to write custom utility functions for the Page class instances that are generated at runtime. This is a topic for the next post.
+
+Till then, hang tight.
