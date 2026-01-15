@@ -31,3 +31,24 @@ for section in parser.sections():
     setattr(tmp, option, value)
 ...
 ```
+
+Since `__getattr__` is called when the attribute is not present in the instance, we will be using the same in order to locate the element. The following could be considered as a
+simple implementation.
+```python
+class Page:
+  ...
+  def __getattr__(self, attribute_name: str):
+    ...
+```
+
+In this function, we will be adding the capacity to resolve the element based on the format of the INI file. In the INI file, the locators would be present as follows:
+```ini
+...
+[Login]
+username = CSS | input[data-test="username"] | false
+password = CSS | input[data-test="password"] | false
+login_button = CSS | button[data-test="login"] | false
+
+[Profile]
+...
+```
