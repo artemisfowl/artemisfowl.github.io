@@ -41,6 +41,7 @@ class Page:
     ...
 ```
 
+#### Implementation of getting the attribute into a Selenium Web Element
 In this function, we will be adding the capacity to resolve the element based on the format of the INI file. In the INI file, the locators would be present as follows:
 ```ini
 ...
@@ -76,4 +77,4 @@ from ast import literal_eval
 is_multiple = literal_eval(is_multiple.capitalize())
 ...
 ```
-Once this is done, the next step is to locate the element using `By.<strategy>` resolution.
+Once this is done, the next step is to locate the element using `By.<strategy>` resolution. The `By.<strategy>` resolution could be done in multiple ways, one could
