@@ -18,7 +18,7 @@ Before we go ahead with the implementation of the `__getattr__` of Python, we ne
 {: .prompt-info }
 
 In Python, we have two magic functions which might be of interest when we are retrieving attributes(some call it properties as well) of an object. One of the functions is the
-`__getattr__` and the other is the `__getattribute__` magic function. When we create an instance of a call, or as we call an object, Python basically calls `getattr(instance, attribute_name)`.
+`__getattr__` and the other is the `__getattribute__` magic function. When we create an instance of a class, or as we call an object, Python basically calls `getattr(instance, attribute_name)`.
 Internally when the attribute value is being retrieved using `getattr(...)` as well, internally the `__getattr__` is called if the attribute is not present. `__getattribute__` magic function
 is always called, irrespective of whether the attribute is present or not present.
 
